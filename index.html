@@ -691,23 +691,24 @@
                 <h2>Let's build something great.</h2>
                 
                 <!-- Setup with FormSubmit for real email delivery to user's address -->
-                <form action="https://formsubmit.co/hossain1992kamal@gmail.com" method="POST">
-                    <!-- FormSubmit configurations -->
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_next" value="https://fay-saal.github.io">
+            <form id="contactForm">
+    <!-- এখানে তোর Web3Forms থেকে পাওয়া Access Key-টা বসাবি -->
+    <input type="hidden" name="access_key" value="a358fa4d-267b-48e6-b915-c2fbc48bafd5">
 
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="NAME" required>
-                        <input type="email" name="email" placeholder="EMAIL" required>
-                    </div>
-                    <div style="margin-bottom: 20px;">
-                        <input type="text" name="subject" placeholder="SUBJECT (OPTIONAL)">
-                    </div>
-                    <div style="margin-bottom: 20px;">
-                        <textarea name="message" rows="5" placeholder="MESSAGE" required></textarea>
-                    </div>
-                    <button type="submit" class="btn-submit">Send Message ➔</button>
-                </form>
+    <div class="form-group">
+        <input type="text" name="name" placeholder="NAME" required>
+        <input type="email" name="email" placeholder="EMAIL" required>
+    </div>
+    <div style="margin-bottom: 20px;">
+        <input type="text" name="subject" placeholder="SUBJECT (OPTIONAL)">
+    </div>
+    <div style="margin-bottom: 20px;">
+        <textarea name="message" rows="5" placeholder="MESSAGE" required></textarea>
+    </div>
+    <button type="submit" id="submitBtn" class="btn-submit">Send Message ➔</button>
+</form>
+<!-- মেসেজ সাবমিট সাকসেস/এরর দেখানোর জন্য ডিভ -->
+<div id="formResponse" style="margin-top: 20px; font-weight: 600; font-size: 0.95rem; display: none; text-align: center;"></div>
             </div>
 
             <!-- REAL LOGOS FOR DYNAMIC REDIRECTION -->
@@ -759,5 +760,55 @@
             });
         });
     </script>
+    <!-- AJAX FORM SUBMISSION SCRIPT (WEB3FORMS) -->
+<script>
+    const form = document.getElementById('contactForm');
+    const responseDiv = document.getElementById('formResponse');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+
+        const formData = new FormData(form);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: json
+        })
+        .then(async (response) => {
+            let resJson = await response.json();
+            if (response.status == 200) {
+                responseDiv.innerHTML = "✓ Message sent successfully!";
+                responseDiv.style.color = "var(--accent-volt)";
+                responseDiv.style.display = "block";
+                form.reset();
+            } else {
+                responseDiv.innerHTML = resJson.message || "Something went wrong!";
+                responseDiv.style.color = "#ff4a4a";
+                responseDiv.style.display = "block";
+            }
+        })
+        .catch(error => {
+            responseDiv.innerHTML = "Something went wrong!";
+            responseDiv.style.color = "#ff4a4a";
+            responseDiv.style.display = "block";
+        })
+        .then(() => {
+            submitBtn.textContent = 'Send Message ➔';
+            submitBtn.disabled = false;
+            setTimeout(() => {
+                responseDiv.style.display = 'none';
+            }, 5000);
+        });
+    });
+</script>
 </body>
 </html>
