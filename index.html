@@ -1,170 +1,599 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faysal Ahmed | Creative Director & Developer</title>
-    <!-- Google Fonts for Cinematic & Terminal Vibe -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <title>Faysal Ahmed | Digital Experiences</title>
+    
+    <!-- Premium Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500;1,600&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --bg-color: #050707;
-            --accent-color: #00ff66; /* Neon Green */
-            --text-color: #e0e6e6;
-            --muted-color: #708080;
+            --bg-base: #0a0d0a;
+            --accent-volt: #ccff00; /* exact premium volt green */
+            --text-main: #f3f4f3;
+            --text-muted: #878e87;
+            --card-bg: rgba(14, 18, 14, 0.45);
+            --border-color: rgba(255, 255, 255, 0.04);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
+        /* Dark Premium Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-base); }
+        ::-webkit-scrollbar-thumb { background: #1a221a; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-volt); }
+
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'JetBrains Mono', monospace;
-            line-height: 1.6;
-            padding: 40px 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+            /* Exact Subtle Grid Line & Ambient Radial Light Background */
+            background-image: 
+                radial-gradient(circle at 80% 20%, rgba(204, 255, 0, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 10% 70%, rgba(40, 60, 40, 0.25) 0%, transparent 50%),
+                linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 55px 55px, 55px 55px;
+            padding-bottom: 100px;
         }
 
         .container {
-            max-width: 750px;
-            width: 100%;
-            border-left: 2px solid #102018;
-            padding-left: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px;
         }
 
-        header {
-            margin-bottom: 50px;
+        /* --- NAVBAR --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
         }
 
-        h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 3rem;
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.6rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
             color: #ffffff;
+        }
+        .logo span { color: var(--accent-volt); }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: #ffffff; }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .theme-toggle {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.7;
+        }
+
+        .btn-talk {
+            background-color: var(--accent-volt);
+            color: #000000;
+            padding: 12px 26px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-talk:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(204, 255, 0, 0.2);
+        }
+
+        /* --- HERO --- */
+        .hero {
+            padding: 140px 0 100px 0;
+            position: relative;
+        }
+
+        .status-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-volt);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background-color: var(--accent-volt);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-volt);
+        }
+
+        .hero h1 {
+            font-size: 4.8rem;
+            font-weight: 400;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            max-width: 900px;
+            margin-bottom: 35px;
+            color: #ffffff;
+        }
+
+        .hero h1 span.serif-italic {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: var(--accent-volt);
+            font-weight: 400;
+        }
+
+        .hero-desc {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 550px;
+            line-height: 1.7;
+            margin-bottom: 45px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-volt);
+            color: #000;
+            padding: 16px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-secondary {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 16px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: background 0.3s;
+        }
+        .btn-secondary:hover { background: rgba(255,255,255,0.03); }
+
+        /* --- SECTION HEADERS --- */
+        .section-meta {
+            color: var(--accent-volt);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 10px;
         }
 
-        .subtitle {
-            color: var(--accent-color);
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .section-header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 50px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            padding-bottom: 20px;
         }
 
-        section {
-            margin-bottom: 40px;
-        }
-
-        h2 {
-            font-family: 'Cinzel', serif;
-            font-size: 1.3rem;
-            color: #ffffff;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-bottom: 1px dashed #152520;
-            padding-bottom: 5px;
-        }
-
-        p {
-            color: var(--text-color);
-            font-size: 0.95rem;
-            margin-bottom: 15px;
-        }
-
-        .highlight {
-            color: var(--accent-color);
-        }
-
-        .work-list {
-            list-style: none;
-        }
-
-        .work-item {
-            margin-bottom: 15px;
-        }
-
-        .work-title {
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
             font-weight: 500;
             color: #ffffff;
         }
 
-        .work-desc {
-            color: var(--muted-color);
-            font-size: 0.85rem;
-        }
-
-        .links a {
-            color: var(--accent-color);
-            text-decoration: none;
-            margin-right: 20px;
+        .section-counter {
+            color: var(--text-muted);
             font-size: 0.9rem;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid transparent;
         }
 
-        .links a:hover {
-            border-bottom: 1px solid var(--accent-color);
-            opacity: 0.8;
+        /* --- PROJECTS --- */
+        .project-section { padding: 80px 0; }
+        .project-list { display: flex; flex-direction: column; gap: 20px; }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: border-color 0.3s, background 0.3s, transform 0.3s;
+            cursor: pointer;
         }
 
-        footer {
-            margin-top: 60px;
-            color: var(--muted-color);
-            font-size: 0.8rem;
+        .project-card:hover {
+            border-color: rgba(204, 255, 0, 0.2);
+            background: rgba(18, 24, 18, 0.6);
+            transform: translateY(-2px);
         }
 
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-            .container { padding-left: 15px; }
+        .proj-left { display: flex; gap: 40px; align-items: flex-start; }
+        .proj-num { color: var(--text-muted); font-size: 0.9rem; margin-top: 5px; }
+        .proj-info h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 400; margin-bottom: 12px; color: #fff; }
+        .proj-info p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; max-width: 500px; }
+        
+        .proj-tags { display: flex; gap: 10px; flex-wrap: wrap; }
+        .tag {
+            background: rgba(204, 255, 0, 0.06);
+            color: var(--accent-volt);
+            border: 1px solid rgba(204, 255, 0, 0.15);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .proj-arrow {
+            color: var(--text-muted);
+            font-size: 1.8rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+        .project-card:hover .proj-arrow {
+            color: var(--accent-volt);
+            transform: translateX(5px);
+        }
+
+        /* --- EXPERIENCE --- */
+        .exp-section { padding: 80px 0; }
+        .timeline {
+            position: relative;
+            padding-left: 35px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 10px;
+            bottom: 10px;
+            width: 1px;
+            background: rgba(204, 255, 0, 0.15);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 60px;
+        }
+        .timeline-item:last-child { margin-bottom: 0; }
+
+        .timeline-dot {
+            position: absolute;
+            left: -35px;
+            top: 8px;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: var(--bg-base);
+            border: 2px solid var(--accent-volt);
+            box-shadow: 0 0 8px var(--accent-volt);
+        }
+
+        .exp-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .exp-time {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            width: 150px;
+        }
+
+        .exp-details { flex: 1; }
+        .exp-details h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 400; color: #fff; margin-bottom: 6px; }
+        .exp-comp { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 15px; }
+        .exp-bullets { list-style: none; }
+        .exp-bullets li { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 8px; position: relative; padding-left: 15px; }
+        .exp-bullets li::before { content: '–'; position: absolute; left: 0; color: var(--accent-volt); }
+
+        /* --- SKILLS --- */
+        .skills-section { padding: 80px 0; text-align: center; }
+        .skills-title { font-family: 'Playfair Display', serif; font-size: 3.2rem; color: #fff; margin-bottom: 40px; }
+        .skills-title span { color: var(--accent-volt); }
+        .skills-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; max-width: 800px; margin: 0 auto; }
+        .skill-btn {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 14px 28px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        .skill-btn:hover {
+            border-color: var(--accent-volt);
+            background: rgba(204, 255, 0, 0.04);
+            transform: scale(1.03);
+        }
+
+        /* --- CONTACT --- */
+        .contact-section { padding: 80px 0 40px 0; text-align: center; }
+        .contact-box {
+            max-width: 650px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 50px;
+            border-radius: 24px;
+            backdrop-filter: blur(10px);
+        }
+        .contact-box h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: #fff; margin-bottom: 30px; }
+        
+        .form-group { display: flex; gap: 20px; margin-bottom: 20px; }
+        input, textarea {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 16px;
+            border-radius: 12px;
+            color: #fff;
+            font-family: inherit;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        input:focus, textarea:focus { border-color: rgba(204, 255, 0, 0.3); }
+        
+        .btn-submit {
+            background: var(--accent-volt);
+            color: #000;
+            border: none;
+            width: 100%;
+            padding: 16px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+        .social-pill {
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+        .social-pill:hover { border-color: rgba(255,255,255,0.15); color: #fff; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .form-group { flex-direction: column; }
+            .exp-row { flex-direction: column; gap: 15px; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <header>
-            <h1>Faysal Ahmed</h1>
-            <div class="subtitle">// Creative Director • Game Dev • Filmmaker</div>
-        </header>
-
-        <section id="about">
-            <h2>> Overview</h2>
-            <p>আমি দিনে কোড লিখি আর রাতে ডার্ক, মিস্ট্রিয়াস স্ক্রিপ্ট আর সিনেমাটিক গল্প বুনি। ফিকশন, থ্রিলার আর সাইকোলজিক্যাল এলিমেন্ট নিয়ে খেলতে আমার ভালো লাগে।</p>
-            <p>বর্তমানে ডেভেলপ করছি কিছু কাস্টম <span class="highlight">Dev Tools</span>, ইউনিক <span class="highlight">Discord Bots</span> এবং একটি ইনডি স্টিলথ গেম।</p>
-        </section>
-
-        <section id="works">
-            <h2>> Projects & Creations</h2>
-            <ul class="work-list">
-                <li class="work-item">
-                    <div class="work-title">⚡ SpeedCraft-AI</div>
-                    <div class="work-desc">An automated Cythonizer that transforms slow Python code into lightning-fast compiled C stacks.</div>
-                </li>
-                <li class="work-item">
-                    <div class="work-title">🔮 Gothic Discord Ecosystem</div>
-                    <div class="work-desc">A highly customized, dark-fantasy themed Discord server bot architecture utilizing advanced embed systems.</div>
-                </li>
+        <!-- NAVBAR -->
+        <nav>
+            <div class="logo">Faysal<span>.</span></div>
+            <ul class="nav-links">
+                <li><a href="#work">Work</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
             </ul>
+            <div class="nav-right">
+                <div class="theme-toggle">🌙</div>
+                <a href="#contact" class="btn-talk">Let's Talk</a>
+            </div>
+        </nav>
+
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="status-tag">
+                <div class="status-dot"></div> Available for projects
+            </div>
+            <h1>I craft digital experiences that <span class="serif-italic">feel alive.</span></h1>
+            <p class="hero-desc">Student & Full-Stack Developer focusing on optimization pipelines, core tools, security architecture, and high-performance clean UI/UX templates.</p>
+            <div class="hero-actions">
+                <a href="#work" class="btn-primary">Read The Blog ↗</a>
+                <a href="#contact" class="btn-secondary">Get In Touch</a>
+            </div>
         </section>
 
-        <section id="connect" class="links">
-            <h2>> Core Endpoints</h2>
-            <a href="https://github.com/fay-saal" target="_blank">GitHub</a>
-            <a href="#" target="_blank">Discord</a>
-            <a href="#" target="_blank">Projects</a>
+        <!-- PROJECTS SECTION -->
+        <section id="work" class="project-section">
+            <div class="section-meta">Selected Work</div>
+            <div class="section-header-flex">
+                <h2 class="section-title">Projects</h2>
+                <div class="section-counter">02 Projects</div>
+            </div>
+            
+            <div class="project-list">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="proj-left">
+                        <div class="proj-num">01</div>
+                        <div class="proj-info">
+                            <h3>SpeedCraft-AI</h3>
+                            <p>Automated Cythonizer package designed to seamlessly capture, convert, and execute interpretation bottlenecks into optimized, raw C binaries.</p>
+                            <div class="proj-tags">
+                                <span class="tag">Python</span>
+                                <span class="tag">Cython</span>
+                                <span class="tag">C</span>
+                                <span class="tag">LLM Engine</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="proj-arrow">→</div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="proj-left">
+                        <div class="proj-num">02</div>
+                        <div class="proj-info">
+                            <h3>Gothic Architecture Bot</h3>
+                            <p>Advanced Discord server ecosystems featuring clean embedded automation components, responsive UI logs, and secure role handlers.</p>
+                            <div class="proj-tags">
+                                <span class="tag">Node.js</span>
+                                <span class="tag">Discord API</span>
+                                <span class="tag">Automation</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="proj-arrow">→</div>
+                </div>
+            </div>
         </section>
 
-        <footer>
-            <p>© 2026 Faysal Ahmed. All rights secured under terminal protocols.</p>
-        </footer>
+        <!-- EXPERIENCE SECTION -->
+        <section id="experience" class="exp-section">
+            <div class="section-meta">Career</div>
+            <div class="section-header-flex">
+                <h2 class="section-title">Experience</h2>
+                <div class="section-counter">02 Roles</div>
+            </div>
+
+            <div class="timeline">
+                <!-- Exp 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="exp-row">
+                        <div class="exp-time">2025 – Present</div>
+                        <div class="exp-details">
+                            <h3>Core Developer & Open Source Author</h3>
+                            <div class="exp-comp">Self-Employed · Remote</div>
+                            <ul class="exp-bullets">
+                                <li>Building high-speed compilation pipelines and tool wrappers for Python backends.</li>
+                                <li>Structuring rich, high-fidelity UI systems for complex asset handling profiles.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exp 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="exp-row">
+                        <div class="exp-time">2024 – 2025</div>
+                        <div class="exp-details">
+                            <h3>Scripting & Bot Architect</h3>
+                            <div class="exp-comp">Freelance Projects</div>
+                            <ul class="exp-bullets">
+                                <li>Integrated robust API management features onto stateful automation platforms.</li>
+                                <li>Maintained responsive operational workflows using sandboxed execution logs.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="skills" class="skills-section">
+            <div class="section-meta">Expertise</div>
+            <h2 class="skills-title">Skills <span>&</span> Tools</h2>
+            <div class="skills-grid">
+                <span class="skill-btn">Python</span>
+                <span class="skill-btn">Cython</span>
+                <span class="skill-btn">C / C++</span>
+                <span class="skill-btn">Node.js</span>
+                <span class="skill-btn">HTML5 & CSS3</span>
+                <span class="skill-btn">JavaScript</span>
+                <span class="skill-btn">REST APIs</span>
+                <span class="skill-btn">Full-Stack Dev</span>
+                <span class="skill-btn">UI/UX Design</span>
+                <span class="skill-btn">Git & GitHub</span>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="contact-section">
+            <div class="contact-box">
+                <h2>Let's build something great.</h2>
+                <form onsubmit="event.preventDefault();">
+                    <div class="form-group">
+                        <input type="text" placeholder="NAME" required>
+                        <input type="email" placeholder="EMAIL" required>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <input type="text" placeholder="SUBJECT (OPTIONAL)">
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <textarea rows="5" placeholder="MESSAGE" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Send Message ➔</button>
+                </form>
+            </div>
+
+            <div class="footer-socials">
+                <a href="mailto:your-email@example.com" class="social-pill">✉ Email</a>
+                <a href="https://github.com/fay-saal" target="_blank" class="social-pill">🐙 GitHub</a>
+                <a href="#" class="social-pill">💬 Discord</a>
+            </div>
+        </section>
     </div>
 
 </body>
