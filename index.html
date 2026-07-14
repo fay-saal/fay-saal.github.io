@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faysal Ahmed | Creative Director & Developer</title>
+    <!-- Google Fonts for Cinematic & Terminal Vibe -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #050707;
+            --accent-color: #00ff66; /* Neon Green */
+            --text-color: #e0e6e6;
+            --muted-color: #708080;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'JetBrains Mono', monospace;
+            line-height: 1.6;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 750px;
+            width: 100%;
+            border-left: 2px solid #102018;
+            padding-left: 30px;
+        }
+
+        header {
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: #ffffff;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--accent-color);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px dashed #152520;
+            padding-bottom: 5px;
+        }
+
+        p {
+            color: var(--text-color);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .highlight {
+            color: var(--accent-color);
+        }
+
+        .work-list {
+            list-style: none;
+        }
+
+        .work-item {
+            margin-bottom: 15px;
+        }
+
+        .work-title {
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .work-desc {
+            color: var(--muted-color);
+            font-size: 0.85rem;
+        }
+
+        .links a {
+            color: var(--accent-color);
+            text-decoration: none;
+            margin-right: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        .links a:hover {
+            border-bottom: 1px solid var(--accent-color);
+            opacity: 0.8;
+        }
+
+        footer {
+            margin-top: 60px;
+            color: var(--muted-color);
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .container { padding-left: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Faysal Ahmed</h1>
+            <div class="subtitle">// Creative Director • Game Dev • Filmmaker</div>
+        </header>
+
+        <section id="about">
+            <h2>> Overview</h2>
+            <p>আমি দিনে কোড লিখি আর রাতে ডার্ক, মিস্ট্রিয়াস স্ক্রিপ্ট আর সিনেমাটিক গল্প বুনি। ফিকশন, থ্রিলার আর সাইকোলজিক্যাল এলিমেন্ট নিয়ে খেলতে আমার ভালো লাগে।</p>
+            <p>বর্তমানে ডেভেলপ করছি কিছু কাস্টম <span class="highlight">Dev Tools</span>, ইউনিক <span class="highlight">Discord Bots</span> এবং একটি ইনডি স্টিলথ গেম।</p>
+        </section>
+
+        <section id="works">
+            <h2>> Projects & Creations</h2>
+            <ul class="work-list">
+                <li class="work-item">
+                    <div class="work-title">⚡ SpeedCraft-AI</div>
+                    <div class="work-desc">An automated Cythonizer that transforms slow Python code into lightning-fast compiled C stacks.</div>
+                </li>
+                <li class="work-item">
+                    <div class="work-title">🔮 Gothic Discord Ecosystem</div>
+                    <div class="work-desc">A highly customized, dark-fantasy themed Discord server bot architecture utilizing advanced embed systems.</div>
+                </li>
+            </ul>
+        </section>
+
+        <section id="connect" class="links">
+            <h2>> Core Endpoints</h2>
+            <a href="https://github.com/fay-saal" target="_blank">GitHub</a>
+            <a href="#" target="_blank">Discord</a>
+            <a href="#" target="_blank">Projects</a>
+        </section>
+
+        <footer>
+            <p>© 2026 Faysal Ahmed. All rights secured under terminal protocols.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
